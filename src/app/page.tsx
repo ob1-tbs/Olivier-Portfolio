@@ -263,6 +263,53 @@ function TimelineItem({
   );
 }
 
+/* ─────────── Education Card ─────────── */
+function EducationCard({
+  edu,
+  index,
+}: {
+  edu: (typeof education)[0];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm"
+    >
+      <div className="flex items-start gap-4">
+        {edu.logo && (
+          <div className="relative w-12 h-12 rounded-lg bg-white/[0.06] border border-white/[0.08] overflow-hidden flex-shrink-0">
+            <Image
+              src={edu.logo}
+              alt={edu.school}
+              fill
+              className="object-contain p-1.5 opacity-70"
+              unoptimized
+            />
+          </div>
+        )}
+        <div>
+          <h3 className="text-base font-light text-white/85 tracking-tight mb-1">
+            {edu.degree}
+          </h3>
+          <p className="text-sm text-violet-300/60 mb-2">
+            {edu.school}
+          </p>
+          <p className="text-xs text-white/35 leading-relaxed">
+            {edu.detail}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 /* ─────────── Skill Bar ─────────── */
 function SkillGroup({
   group,
@@ -422,45 +469,9 @@ export default function PortfolioPage() {
             </div>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
-            {education.map((edu, i) => {
-              const ref = useRef<HTMLDivElement>(null);
-              const isInView = useInView(ref, { once: true, margin: '-40px' });
-              return (
-                <motion.div
-                  key={edu.school}
-                  ref={ref}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm"
-                >
-                  <div className="flex items-start gap-4">
-                    {edu.logo && (
-                      <div className="relative w-12 h-12 rounded-lg bg-white/[0.06] border border-white/[0.08] overflow-hidden flex-shrink-0">
-                        <Image
-                          src={edu.logo}
-                          alt={edu.school}
-                          fill
-                          className="object-contain p-1.5 opacity-70"
-                          unoptimized
-                        />
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="text-base font-light text-white/85 tracking-tight mb-1">
-                        {edu.degree}
-                      </h3>
-                      <p className="text-sm text-violet-300/60 mb-2">
-                        {edu.school}
-                      </p>
-                      <p className="text-xs text-white/35 leading-relaxed">
-                        {edu.detail}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {education.map((edu, i) => (
+              <EducationCard key={edu.school} edu={edu} index={i} />
+            ))}
           </div>
         </div>
       </Section>
