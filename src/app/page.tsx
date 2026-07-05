@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useRef } from 'react';
 import {
   motion,
@@ -18,89 +19,134 @@ const ShaderBackground = dynamic(
   { ssr: false }
 );
 
+/* ─────────── Company Logos ─────────── */
+const LOGO_SON = 'https://sfile.chatglm.cn/images-ppt/3db696f6d290.jpg';
+const LOGO_PHI = 'https://sfile.chatglm.cn/images-ppt/3e2de11ece39.jpg';
+const LOGO_TBS = 'https://sfile.chatglm.cn/images-ppt/90786ea0778c.jpg';
+const LOGO_CRI = 'https://sfile.chatglm.cn/images-ppt/cf6e98e41bcd.jpg';
+const LOGO_ESC = 'https://sfile.chatglm.cn/images-ppt/0b13e2d978b5.jpg';
+const LOGO_ULB = 'https://sfile.chatglm.cn/images-ppt/b1d0d58027fc.jpg';
+
 /* ─────────── Data ─────────── */
 const experiences = [
   {
+    role: 'Chief Marketing Officer',
+    org: 'Matelab',
+    logo: null,
+    period: '2023 — Present',
+    description:
+      'Leading marketing strategy for Matelab, a media company operating across six European countries. Overseeing brand positioning, growth marketing, and AI-driven campaign optimization across multiple markets and languages.',
+    tags: ['Media', 'Growth Marketing', 'Multi-Market'],
+  },
+  {
     role: 'Program Director & Professor',
     org: 'TBS Education Barcelona',
-    period: '2022 — Present',
+    logo: LOGO_TBS,
+    period: '2008 — Present',
     description:
-      'Leading the MSc AI-Driven Digital Marketing & Analytics program. Shaping the next generation of marketing leaders by bridging data science, artificial intelligence, and creative strategy. Developed industry partnerships and real-world project frameworks with global brands.',
+      'Directing the MSc AI-Driven Digital Marketing & Analytics program and coordinating the Digital Marketing track for the Bachelor in Management. Teaching SEO, SEM, CRM, and data-driven marketing. Shaping the next generation of marketing leaders by bridging AI, data science, and creative strategy.',
     tags: ['AI Strategy', 'Program Leadership', 'Academic Innovation'],
   },
   {
-    role: 'Chief Marketing Officer',
-    org: 'Growth-Stage Technology Company',
-    period: '2019 — 2022',
+    role: 'Digital Marketing & AI Consultant',
+    org: 'Crisalix',
+    logo: LOGO_CRI,
+    period: '2018 — 2023',
     description:
-      'Spearheaded a full-funnel digital transformation, integrating AI-powered analytics into campaign optimization. Oversaw P&L for marketing operations, managed cross-functional teams across 4 markets, and drove a 3x increase in qualified pipeline through data-driven attribution models.',
-    tags: ['Digital Transformation', 'P&L Management', 'Growth Marketing'],
+      'Drove the digital marketing transformation for Crisalix, a B2B SaaS platform for plastic surgeons. Launched my.crisalix with a product-led growth (PLG) funnel, scaling user acquisition across international markets.',
+    tags: ['SaaS', 'PLG', 'Digital Transformation'],
   },
   {
-    role: 'VP of Marketing & Distribution',
-    org: 'Multichannel Retail Group',
-    period: '2015 — 2019',
+    role: 'Founder & CEO',
+    org: 'Losali / Obinova',
+    logo: null,
+    period: '2012 — 2018',
     description:
-      'Owned marketing strategy and multichannel distribution across online and offline channels. Implemented Lean Startup methodologies for rapid market testing, resulting in a 40% reduction in time-to-market for new campaigns. Built and mentored a team of 25+ marketing professionals.',
-    tags: ['Multichannel', 'Lean Startup', 'Team Leadership'],
+      'Founded Losali, a telecommunications company solving premium-rate number accessibility from abroad. Created Obinova, building and managing product comparison websites across 3 verticals and 5 countries. Built both ventures from zero to profitability.',
+    tags: ['Entrepreneurship', 'Web Products', 'Telecom'],
   },
   {
-    role: 'Senior Strategy Consultant',
-    org: 'Management Consulting Firm',
-    period: '2011 — 2015',
+    role: 'Marketing Leader',
+    org: 'Philips',
+    logo: LOGO_PHI,
+    period: '2002 — 2012',
     description:
-      'Delivered strategic marketing and operational consulting for C-suite clients across retail, tech, and luxury sectors. Led due diligence, market entry analysis, and post-merger integration projects with a combined portfolio value exceeding 200M EUR.',
-    tags: ['Strategy', 'M&A Advisory', 'Market Entry'],
+      'Spent 10 years with growing responsibilities across marketing leadership roles at Philips. Managed multichannel distribution, P&L oversight, and marketing operations across consumer electronics divisions.',
+    tags: ['Multichannel', 'P&L Management', 'Consumer Electronics'],
+  },
+  {
+    role: 'Young Talent Program',
+    org: 'Sony',
+    logo: LOGO_SON,
+    period: '2000 — 2002',
+    description:
+      'Entered the prestigious Sony young talent program after graduating. Two years of intensive exposure to multiple professional disciplines through trainings, rotations, and visits to Sony operations across Europe.',
+    tags: ['Graduate Program', 'Rotational', 'Multinational'],
+  },
+];
+
+const education = [
+  {
+    degree: 'MSc in Business Administration',
+    school: 'ESCP Business School',
+    logo: LOGO_ESC,
+    detail: 'Specialization in Strategic Planning, Product Marketing & Digital Transformation. Campuses in Paris, Madrid, Oxford.',
+  },
+  {
+    degree: "Bachelor's in Economics",
+    school: 'Universit\u00e9 Libre de Bruxelles',
+    logo: LOGO_ULB,
+    detail: 'Economics degree from ULB in Brussels, providing the quantitative and analytical foundation for a career in marketing and management.',
   },
 ];
 
 const projects = [
   {
-    title: 'AI-Driven Campaign Engine',
-    subtitle: 'Marketing Technology',
+    title: 'my.crisalix PLG Funnel',
+    subtitle: 'Crisalix',
     description:
-      'Built an end-to-end campaign optimization platform using machine learning models to predict customer lifetime value, automate bid management, and personalize creative assets in real time across Google, Meta, and programmatic channels.',
-    tags: ['Machine Learning', 'Automation', 'Personalization'],
+      'Launched my.crisalix with a product-led growth strategy, designing the full conversion funnel from free trial to paid subscription. Scaled user acquisition across international markets for a B2B SaaS platform serving plastic surgeons.',
+    tags: ['PLG', 'SaaS', 'Conversion Optimization'],
     gradient: 'bg-gradient-to-br from-violet-900/40 via-purple-900/20 to-transparent',
   },
   {
-    title: 'MSc Program Redesign',
-    subtitle: 'Academic Innovation',
+    title: 'MSc AI-Driven Marketing Program',
+    subtitle: 'TBS Education',
     description:
-      'Redesigned the TBS Education MSc curriculum to integrate AI, data analytics, and agile methodologies into traditional marketing pedagogy. Launched the first cohort with 95% placement rate and established corporate partnerships with 20+ international brands.',
+      'Designed and launched the MSc AI-Driven Digital Marketing & Analytics program. Integrated AI, data analytics, and agile methodologies into marketing pedagogy. First cohort achieved 95% placement rate with 20+ corporate partnerships.',
     tags: ['Curriculum Design', 'AI Pedagogy', 'Industry Partnerships'],
     gradient: 'bg-gradient-to-br from-cyan-900/40 via-teal-900/20 to-transparent',
   },
   {
-    title: 'Omnichannel Growth Framework',
-    subtitle: 'Strategic Consulting',
+    title: 'Comparison Website Network',
+    subtitle: 'Obinova',
     description:
-      'Developed a proprietary framework for synchronizing online and offline customer journeys. Implemented for 3 enterprise clients, achieving an average 28% increase in customer retention and 35% uplift in cross-channel revenue within 12 months.',
-    tags: ['Omnichannel', 'Customer Journey', 'Revenue Growth'],
+      'Created and managed product comparison websites spanning 3 verticals and 5 countries. Built the technical infrastructure, SEO strategy, and monetization model from the ground up.',
+    tags: ['Web Products', 'SEO', 'Multi-Country'],
     gradient: 'bg-gradient-to-br from-amber-900/40 via-orange-900/20 to-transparent',
   },
   {
-    title: 'Predictive Analytics Dashboard',
-    subtitle: 'Data Product',
+    title: 'Matelab Pan-European Growth',
+    subtitle: 'Matelab',
     description:
-      'Designed and deployed a real-time analytics dashboard for executive decision-making, featuring predictive models for demand forecasting, churn prediction, and marketing mix optimization. Reduced reporting cycle from 2 weeks to real-time.',
-    tags: ['Predictive Analytics', 'BI', 'Executive Dashboards'],
+      'Spearheading marketing across six European countries for a media company. Aligning brand strategy, local market execution, and cross-border growth initiatives.',
+    tags: ['Multi-Market', 'Media', 'Brand Strategy'],
     gradient: 'bg-gradient-to-br from-emerald-900/40 via-green-900/20 to-transparent',
   },
   {
-    title: 'Startup Accelerator Program',
-    subtitle: 'Entrepreneurship',
+    title: 'Losali Telecom Venture',
+    subtitle: 'Losali',
     description:
-      'Founded and directed an accelerator program connecting early-stage marketing-tech startups with corporate partners. Mentored 30+ startups, facilitated 5M+ EUR in funding, and established a pipeline for innovation scouting.',
-    tags: ['Startups', 'Mentoring', 'Venture Building'],
+      'Founded a telecommunications company addressing the gap in premium-rate number accessibility from abroad. Identified the market need, built the product, and scaled to profitability.',
+    tags: ['Telecom', 'Startup', 'Market Gap'],
     gradient: 'bg-gradient-to-br from-rose-900/40 via-pink-900/20 to-transparent',
   },
   {
-    title: 'Data-Driven Brand Strategy',
-    subtitle: 'Brand Management',
+    title: 'AI & SEO Masterclass Series',
+    subtitle: 'TBS Education',
     description:
-      'Pioneered an AI-augmented brand positioning methodology combining sentiment analysis, competitive intelligence, and consumer behavior modeling. Deployed across 4 global brands, resulting in measurable improvements in brand equity and market share.',
-    tags: ['Brand Strategy', 'Sentiment Analysis', 'AI'],
+      'Delivering online masterclasses on AI applications in digital marketing. Topics include AI-powered SEO despite Google updates, data-driven decision making, and marketing automation for modern enterprises.',
+    tags: ['AI', 'SEO', 'Executive Education'],
     gradient: 'bg-gradient-to-br from-indigo-900/40 via-blue-900/20 to-transparent',
   },
 ];
@@ -157,10 +203,10 @@ function TimelineItem({
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{
         duration: 0.6,
-        delay: index * 0.12,
+        delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="relative pl-8 md:pl-12 pb-12 last:pb-0 group"
+      className="relative pl-8 md:pl-12 pb-14 last:pb-0 group"
     >
       {/* Timeline line */}
       <div className="absolute left-0 md:left-4 top-2 bottom-0 w-px bg-gradient-to-b from-white/20 to-transparent" />
@@ -171,17 +217,34 @@ function TimelineItem({
       </div>
 
       <div>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mb-3">
-          <h3 className="text-base md:text-lg font-light text-white/90 tracking-tight">
-            {item.role}
-          </h3>
-          <span className="text-[11px] tracking-[0.2em] uppercase text-white/30 font-mono">
-            {item.period}
-          </span>
+        {/* Logo + Role + Period row */}
+        <div className="flex items-start gap-4 mb-3">
+          {item.logo && (
+            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/[0.06] border border-white/[0.08] overflow-hidden flex-shrink-0 mt-0.5">
+              <Image
+                src={item.logo}
+                alt={item.org}
+                fill
+                className="object-contain p-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                unoptimized
+              />
+            </div>
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+              <h3 className="text-base md:text-lg font-light text-white/90 tracking-tight">
+                {item.role}
+              </h3>
+              <span className="text-[11px] tracking-[0.2em] uppercase text-white/30 font-mono flex-shrink-0">
+                {item.period}
+              </span>
+            </div>
+            <p className="text-sm text-violet-300/60 mt-0.5 tracking-wide">
+              {item.org}
+            </p>
+          </div>
         </div>
-        <p className="text-sm text-violet-300/60 mb-3 tracking-wide">
-          {item.org}
-        </p>
+
         <p className="text-sm text-white/40 leading-relaxed max-w-2xl mb-4">
           {item.description}
         </p>
@@ -298,7 +361,7 @@ export default function PortfolioPage() {
             </p>
             <div className="hidden sm:block w-px h-4 bg-white/20" />
             <p className="text-sm text-white/25 font-light">
-              Program Director, TBS Education
+              CMO at Matelab &middot; Program Director at TBS Education
             </p>
           </motion.div>
 
@@ -332,10 +395,72 @@ export default function PortfolioPage() {
               <blockquote className="text-xl md:text-2xl lg:text-3xl font-light text-white/60 leading-relaxed tracking-tight mb-8">
                 &ldquo;The good old days of Mad Men are over. It&apos;s not just the creative in marketing that comes up with an idea and pops up something that works really well &mdash; now it&apos;s data-driven, and that&apos;s really the skill that companies are looking for.&rdquo;
               </blockquote>
+              <p className="text-sm text-white/35 leading-[1.8] max-w-2xl mb-6">
+                I am an accomplished Executive with deep experience across operations, P&L oversight, multichannel distribution, and marketing &mdash; spanning start-up, growth, and mature organizations. After graduating from ULB in Brussels and ESCP Business School, I entered Sony&apos;s young talent program, then spent a decade at Philips in marketing leadership roles before founding my own companies.
+              </p>
               <p className="text-sm text-white/35 leading-[1.8] max-w-2xl">
-                I am an accomplished Executive with deep experience across operations, P&L oversight, multichannel distribution, and marketing &mdash; spanning start-up, growth, and mature organizations. My work sits at the intersection of data science, artificial intelligence, and creative strategy, helping organizations unlock measurable growth through evidence-based decision-making. Currently, I lead the MSc AI-Driven Digital Marketing & Analytics program at TBS Education in Barcelona, where I prepare the next generation of marketing leaders for an increasingly complex, technology-driven landscape.
+                My work sits at the intersection of data science, artificial intelligence, and creative strategy. Currently CMO at Matelab (media, 6 European countries) and Program Director of the MSc AI-Driven Digital Marketing & Analytics at TBS Education in Barcelona, where I have been teaching since 2008.
               </p>
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ───── EDUCATION ───── */}
+      <Section className="relative z-10 px-6 md:px-12 lg:px-24 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-12">
+            <div className="md:col-span-4">
+              <p className="text-[11px] tracking-[0.35em] uppercase text-white/30">
+                Education
+              </p>
+            </div>
+            <div className="md:col-span-8">
+              <h2 className="text-3xl md:text-4xl font-extralight text-white/80 tracking-tight">
+                Academic Background
+              </h2>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
+            {education.map((edu, i) => {
+              const ref = useRef<HTMLDivElement>(null);
+              const isInView = useInView(ref, { once: true, margin: '-40px' });
+              return (
+                <motion.div
+                  key={edu.school}
+                  ref={ref}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm"
+                >
+                  <div className="flex items-start gap-4">
+                    {edu.logo && (
+                      <div className="relative w-12 h-12 rounded-lg bg-white/[0.06] border border-white/[0.08] overflow-hidden flex-shrink-0">
+                        <Image
+                          src={edu.logo}
+                          alt={edu.school}
+                          fill
+                          className="object-contain p-1.5 opacity-70"
+                          unoptimized
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-base font-light text-white/85 tracking-tight mb-1">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-sm text-violet-300/60 mb-2">
+                        {edu.school}
+                      </p>
+                      <p className="text-xs text-white/35 leading-relaxed">
+                        {edu.detail}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </Section>
@@ -374,14 +499,14 @@ export default function PortfolioPage() {
             </div>
             <div className="md:col-span-8">
               <h2 className="text-3xl md:text-4xl font-extralight text-white/80 tracking-tight">
-                Selected Experience
+                Experience
               </h2>
             </div>
           </div>
 
           <div className="max-w-3xl">
             {experiences.map((item, i) => (
-              <TimelineItem key={item.role} item={item} index={i} />
+              <TimelineItem key={item.org + item.role} item={item} index={i} />
             ))}
           </div>
         </div>
@@ -442,6 +567,19 @@ export default function PortfolioPage() {
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                   LinkedIn
+                </motion.a>
+                <motion.a
+                  href="https://twitter.com/invisiblegp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm tracking-[0.1em] uppercase text-white/80 border border-white/15 rounded-full hover:border-white/30 hover:bg-white/[0.04] transition-all duration-500"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  X / Twitter
                 </motion.a>
                 <motion.a
                   href="mailto:olivier.buigues@tbs-education.com"
