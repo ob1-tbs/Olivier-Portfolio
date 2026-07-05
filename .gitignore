@@ -52,3 +52,12 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Temp research files
+linkedin_data.json
+search_results*.json
+tbs_page.json
+tool-results/
+
+# Download artifacts (screenshots)
+/download/
